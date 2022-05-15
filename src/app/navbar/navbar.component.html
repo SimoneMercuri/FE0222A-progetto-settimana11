@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggle-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <a class="navbar-brand" href="javascript:void(0)">ProgettoSettimana11</a>
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['/']" routerLinkActive="active" >Home</a> <!--La rotta è gestita del sistema di rotte in app modules-->
+        </li>
+
+         <li class="nav-item">
+           <a class="nav-link" aria-current="page" [routerLink]="['/carrello']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Carrello</a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+
