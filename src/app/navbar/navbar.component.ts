@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarrelloService } from '../carrello.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public oggettiTotali : number = 0;
+  constructor(private carrelloService : CarrelloService) { }
 
   ngOnInit(): void {
+    this.carrelloService.getProdotti()
+    .subscribe(result => {
+      this.oggettiTotali = result.length;
+    })
   }
 
 }

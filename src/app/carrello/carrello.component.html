@@ -1,1 +1,83 @@
-<p>carrello works!</p>
+<ng-container *ngIf="prodotto.length == 0" >
+<div class="text-center mt-5">
+  <h1>Il tuo carrello è vuoto</h1>
+  <button routerLink="" class="btn btn-primary">Torna ai prodotti</button>
+</div>
+</ng-container>
+
+
+<ng-container *ngIf="prodotto.length != 0">
+  <div class="card-table m-5">
+    <div class="cart-product-list">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Quantità</th>
+            <th>Nome prodotto</th>
+            <th>Prezzo</th>
+            <th>Cancella</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prodotto of prodotto; let i = index">
+            <td>{{prodotto.quantity}}</td>
+            <td>{{prodotto.name}}</td>
+            <td><button  class="btn btn-primary">{{prodotto.price}} €</button></td>
+            <td> <button (click)="rimuoviProdotto(prodotto)" class="btn btn-danger">Elimina</button></td>
+
+          </tr>
+          <tr>
+            <td><strong>Totale : {{totale}} €</strong></td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="m-5 ">
+
+  <div class="form-group">
+      <label for="name">Nome completo</label>
+      <input
+          formControlName="name"
+          id="name"
+          type="text"
+          class="form-control">
+      <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+          <div *ngIf="f['name'].errors && f['name'].errors['required']">Il nome e cognome è necessario</div>
+          <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Nome non valido</div>
+      </div>
+  </div>
+
+  <div class="form-group mt-3">
+      <label for="email">Email</label>
+      <input
+          formControlName="email"
+          id="email"
+          type="text"
+          class="form-control">
+      <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+          <div *ngIf="f['email'].errors && f['email'].errors['required']">Email necesseria</div>
+          <div *ngIf="f['email'].errors && f['email'].errors['email']">Inserisci una email valida</div>
+      </div>
+  </div>
+
+  <div class="form-group mt-3">
+      <label for="andress">Indirizzo</label>
+      <textarea
+
+          id="text"
+          type="text"
+          class="form-control">
+      </textarea>
+      <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+          <div *ngIf="f['body'].errors && f['body'].errors['required']">L'indirizzo è necessario</div>
+      </div>
+  </div>
+
+  <button (click)="carrelloVuoto(prodotto)" class="btn btn-primary mt-3"  type="submit">Completa il pagamento</button>
+</form>
+</ng-container>
