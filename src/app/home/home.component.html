@@ -1,0 +1,17 @@
+<div class="container mt-5">
+
+  <div class="row" *ngIf="prodotti;">
+    <div class="col-6 mb-3" *ngFor="let prodotto of prodotti; let i = index">
+      <div class="card h-100">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ prodotto.name }}</h5>
+          <p>{{prodotto.description}}</p>
+          <p>{{prodotto.price}}€</p>
+          <a class="btn btn-primary" >Dettagli</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
